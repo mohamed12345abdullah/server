@@ -45,7 +45,9 @@ app.post("/",(req,res)=>{
     // console.log(req.body);  
     res.end(" done ");
 })
-
+app.get("/",(req,res)=>{
+    res.end("hello world");
+})
 
 // listen server
 app.listen(port,()=>{ 
