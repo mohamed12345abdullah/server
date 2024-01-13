@@ -10,12 +10,11 @@ app.options('*', (req, res) => {
 
 // CORS middleware
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // or specify the correct origin
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-
 // Your existing routes
 const coursesRoute = require("./routes/courses.routes");
 const clientRouter = require('./routes/clientRouter');
