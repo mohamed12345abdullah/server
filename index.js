@@ -1,23 +1,25 @@
 const express = require("express");
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+var bodyParser = require('body-parser')
 
-// Handling OPTIONS requests (preflight)
-app.options('*', (req, res) => {
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.status(200).send();
-});
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
+ 
 // CORS middleware
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin',"*" );
+
+    // res.header('Access-Control-Allow-Origin', 'no-cors'); // Replace with your client's origin
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
+
+
+
 // Your existing routes
 const coursesRoute = require("./routes/courses.routes");
 const clientRouter = require('./routes/clientRouter');
@@ -25,10 +27,9 @@ app.use("/courses", coursesRoute);
 app.use("/clients", clientRouter);
 
 app.get("/", (req, res) => {
-    res.end(" start server 2 ");
+    res.end("start server 2");
 });
 
 app.listen(5000, () => {
     console.log("server 2 start and listen to port 5000");
 });
-
