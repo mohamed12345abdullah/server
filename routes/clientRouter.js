@@ -4,11 +4,11 @@ const controler=require('../controlers/client.controler');
 
 const Router=express.Router();
 
-const multer=require('multer');
-const upload=multer({dest:'uploads/'});
-
+// const multer=require('multer');
+// const upload=multer({dest:'uploads/'});
+// upload.single('avatar')
 Router.route('/addclient') 
-        .post(upload.single('avatar'),controler.addclient);
+        .post(controler.addclient);
 
 Router.route("/login")
         .post(controler.login);
