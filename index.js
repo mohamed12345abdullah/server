@@ -1,6 +1,24 @@
 const express= require("express");
 const app=express();
 
+
+
+const coursesRoute=require("./routes/courses.routes");
+
+
+
+
+app.use("/courses",coursesRoute); 
+
+
+
+
+
+
+
+
+
+
 app.get("/", (req,res)=>{
 
     res.end(" start  server 2 ");
