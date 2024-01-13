@@ -3,6 +3,7 @@ const { throws } = require('assert');
 const { error } = require('console');
 const JWT=require('jsonwebtoken');
 
+const secret="asdfghjkl";
 
 const generatetoken=(payload)=>{ 
 
