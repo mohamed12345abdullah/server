@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Handling OPTIONS requests (preflight)
 app.options('*', (req, res) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
