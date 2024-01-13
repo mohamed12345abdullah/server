@@ -1,6 +1,6 @@
 
-require('dotenv').config();
-const port=process.env.PORT;
+// require('dotenv').config();
+const port=4000;    //process.env.PORT;
 
 const express=require("express");
 const app=express();
@@ -50,7 +50,7 @@ app.get("/",(req,res)=>{
 })
 
 // listen server
-app.listen(port,()=>{ 
+app.listen(port,"127.0.0.1",()=>{ 
     console.log("server run on port"+port);
 }); 
 
