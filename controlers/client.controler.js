@@ -6,35 +6,35 @@ const { log } = require('console');
 
 
 const addclient=async(req,res)=>{
-    console.log('Received request:', req);
-    const clientData = req.body;
-    console.log('Received client data:', clientData);
+    // console.log('Received request:', req);
+    // const clientData = req.body;
+    // console.log('Received client data:', clientData);
 
-    // Process the data and send a response
-    res.status(200).json({ success: true });
-
-
+    // // Process the data and send a response
+    // res.status(200).json({ success: true });
 
 
-    // const{email,name,password,picture }=req.body;
-    // console.log("aaaaaaaaaaaaaaaaaaaaaaaaa",req.body); 
-    // const oldColient= await client.findOne({email});
-    // if(oldColient){
-    //     res.status(400).end("user are exsists");
-    // }else{
-    //     const newClient= new client({
-    //         email,
-    //         name,
-    //         password,
-    //         picture
-    //     });
-    //     console.log("new client is : ", newClient);
-    //     // await newClient.save();
-    //     const token=JWT.generatetoken({email});
-    //     //responseText
-    //     res.status(201).json(token);
+
+
+    const{email,name,password,picture }=req.body;
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa",req.body); 
+    const oldColient= await client.findOne({email});
+    if(oldColient){
+        res.status(400).end("user are exsists");
+    }else{
+        const newClient= new client({
+            email,
+            name,
+            password,
+            picture
+        });
+        console.log("new client is : ", newClient);
+        await newClient.save();
+        const token=JWT.generatetoken({email});
+        //responseText
+        res.status(201).json(token);
          
-    // } 
+    } 
 
 } 
 
