@@ -18,6 +18,24 @@ Router.route("/reserveCourse/:id")
 
 
 Router.route("/getClient")
-        .post(jwt.verify,controler.getClient);       
+        .post(jwt.verify,controler.getClient);   
+
+Router.route("/getAllClients")
+        .get(controler.getAllClients);       
+
+Router.route("/addTask")
+        .post(controler.addTaskToclient);
+
+Router.route("/addRate")
+        .post(controler.addRate);
+
+
+Router.route("/addGroup")
+        .post(controler.addGroup); 
+        
+        
+Router.route("/getCourse")
+        .post(controler.getCourse);
+
 
 module.exports=Router;        

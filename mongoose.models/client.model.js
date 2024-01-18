@@ -16,19 +16,26 @@ const clientschema= new mongoose.Schema({
     },
     courses:[ 
         {
-            type:String,
+            courseId:String,
+            tasks:
+                [ 
+                    {
+                        taskId:String,
+                        rate:{
+                            type:Number,
+                            default:0
+
+                        } 
+                    }
+                ]
         }
     ],
-    tasks:
-        [ 
-            {
-                taskId:String,
-                rate:String,
-            }
-        ],
     picture:{ 
         type:String,
         default:"../../server/uploads/profile/default.jpg"
+    },
+    group:{
+        type:String,
     }    
     
 }) 

@@ -24,7 +24,7 @@ const verify=(req,res,next)=>{
         req.email=decoded.email;
         next();
     }catch(e){
-        console.log("errr");
+        console.log("errr",e);
         res.status(401).end("expireddddd");
     }
 } 

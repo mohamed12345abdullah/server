@@ -23,8 +23,13 @@ app.use((req, res, next) => {
 // Your existing routes
 const coursesRoute = require("./routes/courses.routes");
 const clientRouter = require('./routes/clientRouter');
+const taskRouter = require("./routes/tasksRouter")
+const groupRouter = require("./routes/groupRouter")
 app.use("/courses", coursesRoute);
 app.use("/clients", clientRouter);
+app.use("/tasks", taskRouter);
+app.use("/groups",groupRouter);
+
 
 app.get("/", (req, res) => {
     res.end("start server 2");
