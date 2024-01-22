@@ -9,6 +9,7 @@ Router.route("/addTask")
         .post(controler.addTask)
 
 
-
+Router.route("/getAllTasks")
+        .get(controler.getAllTasks)
 
 module.exports=Router;

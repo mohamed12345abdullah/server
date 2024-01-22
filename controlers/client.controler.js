@@ -94,9 +94,10 @@ const addTaskToclient=async(req,res)=>{
     const email=req.body.email;
     console.log(" email is : ",email); 
     const taskId=req.body.taskId;
-    const courseId=req.body.courseId;
-    console.log("task id d d d d d d",courseId);
-    const opject=await client.findOne({email},{courses:{$elemMatch:{courseId}}});
+    // const courseId=req.body.courseId;
+    // console.log("task id d d d d d d",courseId);
+    // courses:{$elemMatch:{courseId}}
+    const opject=await client.findOne({email},{courses:1});
     console.log(" course :::",opject);
     opject.courses[0].tasks.push({taskId,rate:" "});
     opject.save();
