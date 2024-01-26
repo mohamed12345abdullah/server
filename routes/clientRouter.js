@@ -13,8 +13,8 @@ Router.route('/addclient')
 Router.route("/login")
         .post(controler.login);
   
-Router.route("/reserveCourse/:id")
-        .post(jwt.verify,controler.addcourseToclient);
+Router.route("/reserveCourse/")
+        .post(controler.addcourseToclient);
 
 
 Router.route("/getClient")

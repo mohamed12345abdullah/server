@@ -22,6 +22,8 @@ const verify=(req,res,next)=>{
     
         console.log(" decodeddddd : ", decoded);
         req.email=decoded.email;
+        req.name=decoded.name;
+        req.number=decoded.number;
         next();
     }catch(e){
         console.log("errr",e);

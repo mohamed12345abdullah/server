@@ -14,6 +14,10 @@ const clientschema= new mongoose.Schema({
         type:String,
         required:true,
     },
+    number:{
+        type:Number,
+        required:true
+    },
     courses:[ 
         {
             courseId:String,
@@ -36,12 +40,17 @@ const clientschema= new mongoose.Schema({
     },
     group:{
         type:String,
+    },token:{
+        type:String,
+    },
+    age:{
+        type:String
     }    
     
 }) 
 
 const clientModel=mongoose.model("Client",clientschema);
-module.exports=clientModel; 
+module.exports=clientModel;  
 
   
 /*

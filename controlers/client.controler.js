@@ -8,7 +8,7 @@ const { log } = require('console');
 
 const addclient=async(req,res)=>{
 
-    const{email,name,password,picture }=req.body;
+    const{email,name,password,number,picture }=req.body;
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaa",req.body); 
     const oldColient= await client.findOne({email});
     if(oldColient){
@@ -18,13 +18,14 @@ const addclient=async(req,res)=>{
             email,
             name,
             password,
+            number,
             picture
         });
         newClient.save();
         console.log("new client is : ", newClient);
         // await newClient.save();
 
-        const token=JWT.generatetoken({email});
+        const token=JWT.generatetoken({email,name,number});
         //responseText
         res.status(201).json(token);
          
@@ -34,10 +35,10 @@ const addclient=async(req,res)=>{
 
 const login=async(req,res)=>{
     console.log(" req.body is : ", req.body);
-    const {email,password}=req.body; 
+    const {email,password,name, number}=req.body; 
     const oldClient= await client.findOne({email,password});
     if(oldClient){ 
-        const token=JWT.generatetoken({email,id:oldClient._id});
+        const token=JWT.generatetoken({email,name:oldClient.name,number:oldClient.number,id:oldClient._id,age:oldClient.age});
         // res.write(oldClient._id);
         res.status(200).json(token);
     }else{
@@ -48,7 +49,7 @@ const login=async(req,res)=>{
 // const oldClient=await client.findByIdAndUpdate(id,{$push:{courses:courseId}});
 
 const addcourseToclient=async(req,res)=>{ 
-    const email=req.email;
+    const email=req.body.email;
     console.log(" email is : ",email);
     const courseId=req.body.courseId;
     console.log("course id d d d d d d",courseId);
@@ -94,12 +95,17 @@ const addTaskToclient=async(req,res)=>{
     const email=req.body.email;
     console.log(" email is : ",email); 
     const taskId=req.body.taskId;
-    // const courseId=req.body.courseId;
+    const courseId=req.body.courseId;
     // console.log("task id d d d d d d",courseId);
     // courses:{$elemMatch:{courseId}}
     const opject=await client.findOne({email},{courses:1});
-    console.log(" course :::",opject);
-    opject.courses[0].tasks.push({taskId,rate:" "});
+    console.log(" course  id :::",courseId);
+    let length=opject.courses.length;
+    const course=opject.courses[length-1];
+    // const course=opject.courses.find(course=>course.courseId==courseId);
+    console.log("course  ggg",course);
+
+    course.tasks.push({taskId,rate:" "});
     opject.save();
     res.status(200).end(" secess add task ");  
 }
@@ -152,7 +158,7 @@ const getCourse=async(req,res)=>{
 
     let tasks=[];
 
-    console.log(course.tasks[0].rate);
+    // console.log(course.tasks[0].rate);
 
     for( var i =0; i<course.tasks.length; i++){
         let taskOPJ=await task.findById({_id:course.tasks[i].taskId});
