@@ -35,8 +35,8 @@ app.use("/requests", reqRouter);
 app.use("/groups",groupRouter);
 
 
-app.post("/requests/addReq", (req, res) => {
-    console.log("sdfasdf")
+app.get("/", (req, res) => {
+  
     res.end("start server 2");
 });
 
