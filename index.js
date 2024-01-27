@@ -27,7 +27,7 @@ const clientRouter = require('./routes/clientRouter');
 const taskRouter = require("./routes/tasksRouter");
 const reqRouter = require("./routes/req.Router");
 const groupRouter = require("./routes/groupRouter")
-app.use(cors())
+// app.use(cors())
 app.use("/courses", coursesRoute);
 app.use("/clients", clientRouter);
 app.use("/tasks", taskRouter);
