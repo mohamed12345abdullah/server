@@ -42,7 +42,7 @@ const login=async(req,res)=>{
         // res.write(oldClient._id);
         res.status(200).json(token);
     }else{
-        res.status(404).end("nottttt found ") 
+        res.status(404).send("nottttt found ") 
     }
 }
 

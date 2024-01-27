@@ -5,9 +5,14 @@ const courseSchema=new mongoose.Schema({
         required:true
     },
     price:{
-        type:Number,
+        type:String,
         required:true
+    },
+    picture:{
+        type:String,
+        default:"تنزيل.jpg"
     }
+
 });
 
 module.exports= mongoose.model("Course",courseSchema);

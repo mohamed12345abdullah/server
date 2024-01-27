@@ -17,7 +17,7 @@ const { resolve } = require('path');
 
 
 const getAllCourses=async(req,res)=>{
-    var courses=await course.find();
+    var courses=await course.find({});
     res.json(courses);
 }
 
