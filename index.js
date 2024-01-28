@@ -9,14 +9,14 @@ app.use(bodyParser.json())
 
  
 // CORS middleware
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin',"*" );
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin',"*" );
 
-//     res.header('Access-Control-Allow-Origin', 'no-cors'); // Replace with your client's origin
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-// });
+    res.header('Access-Control-Allow-Origin', 'no-cors'); // Replace with your client's origin
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 
 
@@ -26,8 +26,8 @@ const coursesRoute = require("./routes/courses.routes");
 const clientRouter = require('./routes/clientRouter');
 const taskRouter = require("./routes/tasksRouter");
 const reqRouter = require("./routes/req.Router");
-const groupRouter = require("./routes/groupRouter")
-app.use(cors())
+const groupRouter = require("./routes/groupRouter");
+app.use(cors());
 app.use("/courses", coursesRoute);
 app.use("/clients", clientRouter);
 app.use("/tasks", taskRouter);
