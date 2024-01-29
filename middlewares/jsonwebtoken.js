@@ -15,7 +15,7 @@ const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiZHVsbGFoQGVtYW
 const verify=(req,res,next)=>{
     console.log("verify");
     try{
-    console.log("token is  : ",req.body.token);
+    console.log("token is  : ",req.body);
     console.log("type of token is  : ",typeof(req.body.token));
     const decoded=JWT.verify(req.body.token,process.env.secret);
     // console.log(decoded);

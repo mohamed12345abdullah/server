@@ -15,26 +15,26 @@ const { log } = require("console");
 
 
  const addReq= async(req,res)=>{
-   console.log("edfghjkl;");
-    if(!req.body){
+   console.log("add req : ");
+   if(!req.body){
         console.log(req.body);
         return res.status(400).send(" bad request ")
-    }else{
-    console.log(req.number);
+   }else{
+      console.log(req.number);
 
-    const data={
-      name:req.name,
-      email:req.email,
-      number:req.number,
-      courseId:req.body.courseId
-    }
+      const data={
+         name:req.name,
+         email:req.email,
+         number:req.number,
+         courseId:req.body.courseId
+      }
 
-    const newRequest=await new request(data);
-    console.log("doneeeeeeee");
-    await newRequest.save();
-    
-    res.send("done ").status(200);
-    }
+      const newRequest=await new request(data);
+      console.log("doneeeeeeee");
+      await newRequest.save();
+      
+      res.send("done ").status(200);
+   }
  }
 
 
