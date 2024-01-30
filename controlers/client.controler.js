@@ -8,7 +8,7 @@ const { log } = require('console');
 
 const addclient=async(req,res)=>{
 
-    const{email,name,password,number,picture }=req.body;
+    const{email,name,password,number,picture,age }=req.body;
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaa",req.body); 
     const oldColient= await client.findOne({email});
     if(oldColient){
@@ -19,7 +19,8 @@ const addclient=async(req,res)=>{
             name,
             password,
             number,
-            picture
+            picture,
+            age
         });
         newClient.save();
         console.log("new client is : ", newClient);
