@@ -10,7 +10,7 @@ const courseSchema=new mongoose.Schema({
     },
     picture:{
         type:String,
-        default:"تنزيل.jpg"
+        default:"images/تنزيل.jpg"
     }
 
 });

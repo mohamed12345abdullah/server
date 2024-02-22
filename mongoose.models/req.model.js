@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const {Schema}=mongoose;
 const reqSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -17,9 +18,9 @@ const reqSchema=new mongoose.Schema({
         type:String,
     
     },
-    courseId:{
-        type:String,
-    },submit:{
+    courseId:
+         {type: Schema.Types.ObjectId, ref: 'Course'} ,
+    submit:{
         type:Boolean,
         default:false
     }   

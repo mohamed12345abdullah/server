@@ -13,4 +13,11 @@ Router.route("/getAllReqs")
 
 Router.route("/submit")   
         .post(controler.submit)
+
+
+        
+Router.route("/getAll")
+.get(controler.getAll)
+
+
 module.exports=Router; 

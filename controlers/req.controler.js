@@ -73,8 +73,16 @@ try {
 }
 
 
+const getAll=async(req,res)=>{
+   const data=await request.find({},{courseId:1}).populate('courseId');
+
+   res.status(200).send(data);
+}
+
+
  module.exports={
     addReq,
     getAllReq,
-    submit
+    submit,
+    getAll
  }
